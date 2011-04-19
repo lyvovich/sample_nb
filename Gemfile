@@ -1,6 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.6'
+gem 'rake', '0.8.7'
+#gem 'rake', '0.9.0.beta.5'
+# gem 'hoe', '2.9.4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -29,6 +32,7 @@ gem 'sqlite3-ruby', '1.3.2',:require=>'sqlite3'
 
 group :development do
    gem 'rspec-rails', '2.5.0'
+   gem 'annotate-models', '1.0.4'
  end
  
  group :test do
