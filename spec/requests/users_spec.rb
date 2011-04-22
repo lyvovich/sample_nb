@@ -19,7 +19,6 @@ describe "Users" do
       end.should_not change(User, :count)
       end 
     end
-
     describe "success" do
 
       it "should make a new user" do
