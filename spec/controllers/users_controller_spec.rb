@@ -38,16 +38,38 @@ describe UsersController do
 
   describe "GET 'new'" do
 
-    it "should be successful" do
+  it "should be successful" do
       get :new
       response.should be_success
     end
 
 
-      it "should have the right title" do
+  it "should have the right title" do
       get :new
       response.should have_selector("title", :content=>"Sign up")
     end
+  
+
+  it "should have a name field" do
+    get :new
+    response.should have_selector("input[name='user[name]'][type='text']")
+  end
+
+  it "should have a email field" do
+    get :new
+    response.should have_selector("input[email='user[email]'][type='text']")
+  end
+
+  it "should have a password field" do
+    get :new
+    response.should have_selector("input[password='user[password]'][type='password']")
+  end
+
+  it "should have a password confirmation field" do
+    get :new
+    response.should have_selector
+    ("input[password_confirmation='user[password_confirmation]'][type='password']")
+  end
   end
 
   describe "POST 'creat'" do
@@ -97,7 +119,12 @@ describe UsersController do
       it "should have a welcome message" do
         post :create, :user=>@attr
         flash[:success].should=~/welcome to the sample app/i
-      end
+			end
+
+			it "should sign the user in" do
+			  post :create, :user => @attr
+				controller.should be_signed_in
+			end
     end
   end
 end
